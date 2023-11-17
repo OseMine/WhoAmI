@@ -1,0 +1,33 @@
+<!-- index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhoAmI</title>
+</head>
+
+<body>
+    <h1>Welcome to WhoAmI</h1>
+
+    <!-- Create Room Form -->
+    <form action="/create-room" method="post">
+        <label for="roomName">Room Name:</label>
+        <input type="text" name="roomName" id="roomName" required>
+        <button type="submit">Create Room</button>
+    </form>
+
+    <hr>
+
+
+    <!-- Join Room Form -->
+    <form action="/join-room" method="post">
+        <label for="roomPIN">Room PIN:</label>
+        <input type="text" name="roomPIN" id="roomPIN" required>
+        <button type="submit">Join Room</button>
+    </form>
+</body>
+
+</html>

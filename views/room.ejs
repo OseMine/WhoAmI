@@ -1,0 +1,29 @@
+<!-- room.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= room.name %></title>
+</head>
+<body>
+    <h1><%= room.name %></h1>
+    <p>PIN: <%= pin %></p>
+    <ul id="player-list"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    
+    <script>
+        const socket = io();
+
+        socket.emit('join-room', {
+            roomID: '<%= room.id %>',
+            playerName: prompt('Enter your name:')
+        });
+
+        socket.on('update-players', (players) => {
+            const playerList = document.getElementById('player-list');
+            playerList.innerHTML = players.map(player => `<li>${player}</li>`).join('');
+        });
+    </script>
+</body>
+</html>
